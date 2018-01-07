@@ -2,15 +2,15 @@
 #
 #AtoM 2.4 Ubuntu 16.04 LTS Installer
 #
-apt install percona-server-server-5.6
-apt install openjdk-8-jre-headless software-properties-common
+apt install -y percona-server-server-5.6
+apt install -y openjdk-8-jre-headless software-properties-common
 wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main"
-apt update
-apt install elasticsearch
+add-apt-repository -y "deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main"
+apt update -y
+apt install -y elasticsearch
 systemctl enable elasticsearch
 systemctl start elasticsearch
-apt install nginx
+apt install -y nginx
 touch /etc/nginx/sites-available/atom
 ln -sf /etc/nginx/sites-available/atom /etc/nginx/sites-enabled/atom
 rm /etc/nginx/sites-enabled/default
@@ -82,8 +82,8 @@ server {
 }" >> /etc/nginx/sites-available/atom
 systemctl enable nginx
 systemctl reload nginx
-apt install php7.0-cli php7.0-curl php7.0-json php7.0-ldap php7.0-mysql php7.0-opcache php7.0-readline php7.0-xml php7.0-fpm php7.0-mbstring php7.0-mcrypt php7.0-xsl php7.0-zip php-memcache php-apcu
-apt install php-dev
+apt install -y php7.0-cli php7.0-curl php7.0-json php7.0-ldap php7.0-mysql php7.0-opcache php7.0-readline php7.0-xml php7.0-fpm php7.0-mbstring php7.0-mcrypt php7.0-xsl php7.0-zip php-memcache php-apcu
+apt install -y php-dev
 pecl install apcu_bc-beta
 echo "extension=apc.so" | tee /etc/php/7.0/mods-available/apcu-bc.ini
 ln -sf /etc/php/7.0/mods-available/apcu-bc.ini /etc/php/7.0/fpm/conf.d/30-apcu-bc.ini
@@ -149,9 +149,9 @@ env[ATOM_DEBUG_IP] = \"10.10.10.10,127.0.0.1\"
 env[ATOM_READ_ONLY] = \"off\"" >> /etc/php/7.0/fpm/pool.d/atom.conf
 systemctl enable php7.0-fpm
 systemctl start php7.0-fpm
-apt install gearman-job-server
-apt install --no-install-recommends fop libsaxon-java
-apt install imagemagick ghostscript poppler-utils ffmpeg
+apt install -y gearman-job-server
+apt install -y --no-install-recommends fop libsaxon-java
+apt install -y imagemagick ghostscript poppler-utils ffmpeg
 wget https://storage.accesstomemory.org/releases/atom-2.4.0.tar.gz
 mkdir /usr/share/nginx/atom
 tar xzf atom-2.4.0.tar.gz -C /usr/share/nginx/atom --strip 1
@@ -161,5 +161,4 @@ mysql -h localhost -u root -p -e "GRANT ALL ON atom.* TO 'atom'@'localhost' IDEN
 sed -i 's/#START_DAEMON=true/START_DAEMON=true/' /etc/default/elasticsearch
 systemctl restart elasticsearch
 systemctl restart php7.0-fpm
-xdg-open http://localhost
-exit
+printf "\033[1;32mWe are almost done! Open your browser and type \"localhost\" in the address bar in order to complete the install.\033[0m\n]"
