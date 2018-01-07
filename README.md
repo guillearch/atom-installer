@@ -6,7 +6,7 @@ This installer was created by [Guillermo Castellano](https://guillearch.github.i
 
 The code is licensed under the [GNU General Public License v3.0](https://github.com/guillearch/atom-installer/blob/master/LICENSE). Feel free to adapt the script for your needs!
 
-##Requirements
+## Requirements
 
 This script is intended for a fresh Ubuntu 16.04 LTS install and may not work properly in other environments.
 
@@ -14,7 +14,7 @@ Note that you will have to run a web installer to complete the install. If you a
 
 Please make sure you have sudo privileges before continuing.
 
-##Downloading the installer
+## Downloading the installer
 
 Let's clone the repository with the following command:
 
@@ -34,7 +34,7 @@ Then unzip the file:
 unzip master.zip
 ```
 
-##Running the script
+## Running the script
 
 Run the script by entering the following command:
 
@@ -50,7 +50,7 @@ Answer "no" when the installer asks you if you want to enable internal debugging
 
 You will be prompted to type again the password you chose earlier.
 
-##Running the web installer
+## Running the web installer
 
 The script will ask you to run the web installer in order to complete the install. To do so, open your browser and type "localhost" in the address bar.
 
@@ -70,7 +70,7 @@ To configure the search engine, enter the following information:
 
 Finally, the installer will ask you to enter a title, description and base URL for your site and set up the administrator account.
 
-##Additional information
+## Additional information
 
 This installer is based on the [AtoM 2.4 documentation](https://www.accesstomemory.org/es/docs/2.4/#) provided by Artefactual Systems.
 
