@@ -2,7 +2,10 @@
 #
 #AtoM 2.4 Ubuntu 16.04 LTS Installer
 #
-apt install -y percona-server-server-5.6
+apt-get install software-properties-common
+add-apt-repository -y ppa:ondrej/mysql-5.6
+apt-get update
+apt-get install -y mysql-server-5.6
 apt install -y openjdk-8-jre-headless software-properties-common
 wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
 add-apt-repository -y "deb http://packages.elasticsearch.org/elasticsearch/1.7/debian stable main"
@@ -152,9 +155,9 @@ systemctl start php7.0-fpm
 apt install -y gearman-job-server
 apt install -y --no-install-recommends fop libsaxon-java
 apt install -y imagemagick ghostscript poppler-utils ffmpeg
-wget https://storage.accesstomemory.org/releases/atom-2.4.0.tar.gz
+wget https://storage.accesstomemory.org/releases/atom-2.4.1.tar.gz
 mkdir /usr/share/nginx/atom
-tar xzf atom-2.4.0.tar.gz -C /usr/share/nginx/atom --strip 1
+tar xzf atom-2.4.1.tar.gz -C /usr/share/nginx/atom --strip 1
 chown -R www-data:www-data /usr/share/nginx/atom
 mysql -h localhost -u root -p -e "CREATE DATABASE atom CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
 mysql -h localhost -u root -p -e "GRANT ALL ON atom.* TO 'atom'@'localhost' IDENTIFIED BY '12345';"
