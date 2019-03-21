@@ -164,4 +164,5 @@ mysql -h localhost -u root -p -e "GRANT ALL ON atom.* TO 'atom'@'localhost' IDEN
 sed -i 's/#START_DAEMON=true/START_DAEMON=true/' /etc/default/elasticsearch
 systemctl restart elasticsearch
 systemctl restart php7.0-fpm
+perl -i -0pe 's/<policy domain="coder" rights="none" pattern="PDF" \/>/<!-- <policy domain="coder" rights="none" pattern="PDF" \/> -->/' /etc/ImageMagick-6/policy.xml
 printf "\033[1;32mWe are almost done! Open your browser and type \"localhost\" in the address bar in order to complete the install.\033[0m\n]"
